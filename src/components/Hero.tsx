@@ -147,31 +147,27 @@ export function Hero() {
         </motion.div>
 
         {/* Orchestrated 3D / Horizontal Slide Funnel */}
-        <div className="w-full max-w-5xl relative z-20 h-[500px]">
-          <AnimatePresence mode="popLayout">
-            {activePanel === null ? (
-               <motion.div 
-                 key="grid"
+        <div className="w-full max-w-5xl relative z-20">
+             <motion.div 
                  initial={{ opacity: 0, scale: 0.95 }}
                  animate={{ opacity: 1, scale: 1 }}
-                 exit={{ opacity: 0, scale: 0.95, filter: "blur(10px)" }}
-                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                 transition={{ duration: 0.8, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
                  className="grid md:grid-cols-2 gap-6 h-full"
                >
                  {/* Panel 1 */}
                  <div 
                    onClick={() => setActivePanel('stop')}
-                   className="glass-panel group relative overflow-hidden rounded-[2.5rem] p-10 cursor-pointer flex flex-col hover:border-gold/30 hover:shadow-[0_20px_50px_rgba(212,175,55,0.1)] transition-all duration-700"
+                   className="glass-panel group relative overflow-hidden rounded-[2.5rem] p-10 cursor-pointer flex flex-col hover:border-gold/30 hover:shadow-[0_20px_50px_rgba(212,175,55,0.1)] transition-all duration-700 h-full"
                  >
                    <div className="absolute inset-0 bg-gradient-to-br from-gold/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
                    <div className="w-16 h-16 rounded-2xl glass-panel border-gold/20 flex items-center justify-center mb-8">
                      <ShieldAlert className="w-8 h-8 text-gold" strokeWidth={1.5} />
                    </div>
                    <h3 className="text-3xl font-serif font-bold text-platinum mb-4">STOP THE DAMAGE</h3>
-                   <p className="text-slate-400 leading-relaxed font-light mb-8 max-w-sm">
+                   <p className="text-slate-400 leading-relaxed font-light mb-8 max-w-sm flex-grow">
                      Instantly halt foreclosures, collections, judgments, garnishments, and predatory debt cycles.
                    </p>
-                   <div className="mt-auto flex items-center justify-between text-gold font-semibold text-sm uppercase tracking-widest group-hover:translate-x-2 transition-transform duration-500">
+                   <div className="mt-auto flex items-center justify-between text-gold font-semibold text-sm uppercase tracking-widest group-hover:translate-x-2 transition-transform duration-500 pt-4">
                      <span>Execute Defense</span>
                      <ArrowRight className="w-5 h-5" strokeWidth={1.5} />
                    </div>
@@ -180,46 +176,61 @@ export function Hero() {
                  {/* Panel 2 */}
                  <div 
                    onClick={() => setActivePanel('build')}
-                   className="glass-panel group relative overflow-hidden rounded-[2.5rem] p-10 cursor-pointer flex flex-col hover:border-cyan-radiant/30 hover:shadow-[0_20px_50px_rgba(56,189,248,0.1)] transition-all duration-700"
+                   className="glass-panel group relative overflow-hidden rounded-[2.5rem] p-10 cursor-pointer flex flex-col hover:border-cyan-radiant/30 hover:shadow-[0_20px_50px_rgba(56,189,248,0.1)] transition-all duration-700 h-full"
                  >
                    <div className="absolute inset-0 bg-gradient-to-br from-cyan-radiant/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
                    <div className="w-16 h-16 rounded-2xl glass-panel border-cyan-radiant/20 flex items-center justify-center mb-8">
                      <TrendingUp className="w-8 h-8 text-cyan-radiant" strokeWidth={1.5} />
                    </div>
                    <h3 className="text-3xl font-serif font-bold text-platinum mb-4">BUILD WEALTH & FUNDING</h3>
-                   <p className="text-slate-400 leading-relaxed font-light mb-8 max-w-sm">
+                   <p className="text-slate-400 leading-relaxed font-light mb-8 max-w-sm flex-grow">
                      Access corporate capital, maximize strategic investments, and build lifelong asset architectures.
                    </p>
-                   <div className="mt-auto flex items-center justify-between text-cyan-radiant font-semibold text-sm uppercase tracking-widest group-hover:translate-x-2 transition-transform duration-500">
+                   <div className="mt-auto flex items-center justify-between text-cyan-radiant font-semibold text-sm uppercase tracking-widest group-hover:translate-x-2 transition-transform duration-500 pt-4">
                      <span>Execute Ascent</span>
                      <ArrowRight className="w-5 h-5" strokeWidth={1.5} />
                    </div>
                  </div>
                </motion.div>
-            ) : (
-               <motion.div
+        </div>
+
+      </div>
+    </section>
+
+    {/* Detail View Modal */}
+    <AnimatePresence>
+        {activePanel !== null && (
+          <div className="fixed inset-0 z-[100] flex items-center justify-center pt-20 px-4 md:p-8">
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setActivePanel(null)}
+              className="absolute inset-0 bg-obsidian/80 backdrop-blur-md cursor-pointer"
+            />
+            <motion.div
                  key="detail"
-                 initial={{ opacity: 0, x: activePanel === 'stop' ? -50 : 50, filter: "blur(10px)" }}
-                 animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
-                 exit={{ opacity: 0, scale: 0.95 }}
-                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                 initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                 animate={{ opacity: 1, scale: 1, y: 0 }}
+                 exit={{ opacity: 0, scale: 0.95, y: 20 }}
+                 transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                  className={cn(
-                   "glass-panel w-full h-full rounded-[2.5rem] p-8 md:p-12 relative flex flex-col md:flex-row gap-12",
-                   activePanel === 'stop' ? "border-gold/30 shadow-[0_0_60px_rgba(212,175,55,0.05)]" : "border-cyan-radiant/30 shadow-[0_0_60px_rgba(56,189,248,0.05)]"
+                   "glass-panel w-full max-w-5xl max-h-[85vh] md:max-h-[80vh] rounded-[2.5rem] p-8 md:p-12 relative flex flex-col md:flex-row gap-12 z-10",
+                   activePanel === 'stop' ? "border-gold/30 shadow-[0_0_60px_rgba(212,175,55,0.15)] bg-obsidian/95" : "border-cyan-radiant/30 shadow-[0_0_60px_rgba(56,189,248,0.15)] bg-obsidian/95"
                  )}
                >
                  <button 
                    onClick={() => setActivePanel(null)}
-                   className="absolute top-6 right-6 p-3 glass-panel rounded-full hover:bg-white/10 text-slate-300 transition-colors z-20"
+                   className="absolute top-4 right-4 md:top-6 md:right-6 w-10 h-10 rounded-full hover:bg-white/10 text-slate-300 transition-colors z-20 flex items-center justify-center bg-black/40 border border-white/10 shadow-xl"
                  >
-                   <X className="w-6 h-6" strokeWidth={1.5} />
+                   <X className="w-5 h-5" strokeWidth={1.5} />
                  </button>
 
                  <div className="md:w-1/3 flex flex-col justify-center">
                     <div className={cn("w-20 h-20 rounded-2xl glass-panel flex items-center justify-center mb-8", activePanel === 'stop' ? "border-gold/30" : "border-cyan-radiant/30")}>
                       {activePanel === 'stop' ? <ShieldAlert className="w-10 h-10 text-gold" strokeWidth={1} /> : <TrendingUp className="w-10 h-10 text-cyan-radiant" strokeWidth={1} />}
                     </div>
-                    <h2 className="font-serif text-4xl font-bold text-platinum mb-4">
+                    <h2 className="font-serif text-4xl font-bold text-platinum mb-4 uppercase">
                       {activePanel === 'stop' ? 'Stop The Damage' : 'Build Wealth'}
                     </h2>
                     <p className="text-slate-400 font-light leading-relaxed mb-8">
@@ -227,7 +238,7 @@ export function Hero() {
                     </p>
                  </div>
 
-                 <div className="md:w-2/3 h-full overflow-y-auto hide-scrollbar pb-8 pr-4 pointer-events-auto relative" onWheel={(e) => e.stopPropagation()} onTouchMove={(e) => e.stopPropagation()} data-lenis-prevent="true">
+                 <div className="md:w-2/3 h-full max-h-[60vh] overflow-y-auto hide-scrollbar pb-8 pr-4 pointer-events-auto relative" onWheel={(e) => e.stopPropagation()} onTouchMove={(e) => e.stopPropagation()} data-lenis-prevent="true">
                     <div className="flex flex-col gap-3">
                       {(activePanel === 'stop' ? stopItems : buildItems)
                         .filter(item => item.toLowerCase().includes(searchQuery.toLowerCase()))
@@ -240,7 +251,7 @@ export function Hero() {
                           className="w-full text-left p-6 rounded-2xl glass-panel group/btn hover:bg-white/5 transition-all flex items-center justify-between"
                         >
                           <span className="font-medium text-platinum group-hover/btn:text-white transition-colors">{item}</span>
-                          <div className={cn("w-8 h-8 rounded-full flex items-center justify-center border transition-all duration-300 group-hover/btn:scale-110", activePanel === 'stop' ? "border-gold/50 text-gold" : "border-cyan-radiant/50 text-cyan-radiant")}>
+                          <div className={cn("w-8 h-8 shrink-0 rounded-full flex items-center justify-center border transition-all duration-300 group-hover/btn:scale-110 ml-4", activePanel === 'stop' ? "border-gold/50 text-gold" : "border-cyan-radiant/50 text-cyan-radiant")}>
                             <ArrowRight className="w-4 h-4" strokeWidth={2} />
                           </div>
                         </motion.button>
@@ -251,12 +262,9 @@ export function Hero() {
                     </div>
                  </div>
                </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
-
-      </div>
-    </section>
+          </div>
+        )}
+      </AnimatePresence>
 
     {/* High-Contrast Trust Ribbon */}
     <div className="w-full border-y border-white/5 bg-obsidian py-8 overflow-hidden relative z-20">
