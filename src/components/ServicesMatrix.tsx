@@ -126,7 +126,7 @@ export function ServicesMatrix() {
               <h2 className="text-xs font-semibold tracking-[0.3em] uppercase text-gold">Architecture of Wealth</h2>
             </div>
             <h2 className="text-4xl md:text-6xl font-serif font-bold text-platinum tracking-tight leading-tight">
-              Interactive Services Matrix.
+              Our Services
             </h2>
           </div>
           <p className="text-lg text-slate-400 max-w-sm font-light">

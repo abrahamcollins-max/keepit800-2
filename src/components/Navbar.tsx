@@ -18,7 +18,7 @@ export function Navbar() {
   }, []);
 
   const navLinks = [
-    { name: 'Services Matrix', href: '#services' },
+    { name: 'Our Services', href: '#services' },
     { name: 'Signature Programs', href: '#programs' },
     { name: 'Workshops & Speaking', href: '#workshops' },
     { name: 'Credit Resources', href: '#resources' },
