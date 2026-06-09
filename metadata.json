@@ -1,6 +1,6 @@
 {
-  "name": "",
-  "description": "",
+  "name": "KEEP IT 800",
+  "description": "Financial freedom architecture and credit solutions.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }
