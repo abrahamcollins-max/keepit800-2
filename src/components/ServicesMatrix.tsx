@@ -149,7 +149,7 @@ export function ServicesMatrix() {
                 "matrix-card w-full text-left relative overflow-hidden flex flex-col p-10 rounded-none border-[0.5px] border-white/10 glass-panel group transition-all duration-700 hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(0,0,0,0.4)]",
                 service.id === 'shields' || service.id === 'foreclosure' ? "aspect-square justify-center" : ""
               )}
-              aria-label={`View ${service.title} Blueprint`}
+              aria-label={`View ${service.title} Details`}
             >
               {/* Radial spotlight effect driven by JS mouse tracking */}
               <div className="pointer-events-none absolute -inset-px opacity-0 group-hover:opacity-100 transition-opacity duration-300 before:absolute before:inset-0 before:bg-[radial-gradient(400px_circle_at_var(--mouse-x)_var(--mouse-y),rgba(212,175,55,0.1),transparent_40%)]" />
@@ -165,7 +165,7 @@ export function ServicesMatrix() {
                  <p className="font-medium text-xs tracking-[0.2em] uppercase text-slate-400 mb-6">{service.subtitle}</p>
                  
                  <div className="mt-auto w-full pt-6 border-t border-white/[0.05] flex items-center justify-between">
-                   <span className="text-xs font-semibold text-slate-500 tracking-wider">VIEW BLUEPRINT</span>
+                   <span className="text-xs font-semibold text-slate-500 tracking-wider">VIEW DETAILS</span>
                    <ChevronRight className="w-4 h-4 text-gold opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-500" />
                  </div>
               </div>
@@ -228,7 +228,7 @@ export function ServicesMatrix() {
 
                     <div className="flex justify-start">
                       <button className="px-10 py-5 rounded-sm glass-panel border-gold/40 text-platinum hover:bg-yellow-400 hover:text-obsidian hover:border-yellow-400 font-bold text-sm tracking-widest uppercase transition-all duration-500 flex items-center gap-3">
-                        Initialize Protocol <ChevronRight className="w-4 h-4" strokeWidth={2} />
+                        Schedule Your Consultation <ChevronRight className="w-4 h-4" strokeWidth={2} />
                       </button>
                     </div>
                   </div>

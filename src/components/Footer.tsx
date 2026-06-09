@@ -7,6 +7,7 @@ export function Footer() {
   const { control, handleSubmit, formState: { errors, isSubmitting, isSubmitSuccessful } } = useForm({
     defaultValues: {
       fullName: '',
+      phone: '',
       email: '',
       objective: ''
     }
@@ -45,7 +46,7 @@ export function Footer() {
                </div>
              </div>
 
-             {/* Minimal Embedded Intake Form */}
+        {/* Minimal Embedded Intake Form */}
              <div className="p-12 lg:p-20 w-full lg:w-1/3 relative z-10 bg-obsidian/50 backdrop-blur-xl h-full flex flex-col justify-center">
                 <h4 className="font-serif text-2xl font-bold text-platinum mb-8">Confidential Intake</h4>
                 {isSubmitSuccessful ? (
@@ -66,19 +67,31 @@ export function Footer() {
                        )}
                      />
                      <label className="absolute left-0 top-3 text-slate-500 text-sm peer-focus:-top-4 peer-focus:text-xs peer-focus:text-gold transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-sm">Full Name</label>
-                     {errors.fullName && <span className="text-red-500 text-xs mt-1 absolute -bottom-5">{errors.fullName.message}</span>}
+                     {errors.fullName && <span className="text-red-500 text-xs mt-1 absolute -bottom-5">{errors.fullName?.message as string}</span>}
+                   </div>
+                   <div className="relative group mt-8">
+                     <Controller
+                       name="phone"
+                       control={control}
+                       rules={{ required: "Phone Number is required" }}
+                       render={({ field }) => (
+                         <input {...field} type="tel" className="w-full bg-transparent border-b border-white/20 px-0 py-3 text-platinum focus:outline-none focus:border-gold transition-colors peer" placeholder=" " />
+                       )}
+                     />
+                     <label className="absolute left-0 top-3 text-slate-500 text-sm peer-focus:-top-4 peer-focus:text-xs peer-focus:text-gold transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-sm">Phone Number</label>
+                     {errors.phone && <span className="text-red-500 text-xs mt-1 absolute -bottom-5">{errors.phone?.message as string}</span>}
                    </div>
                    <div className="relative group mt-8">
                      <Controller
                        name="email"
                        control={control}
-                       rules={{ required: "Corporate Email is required", pattern: { value: /^\S+@\S+$/i, message: "Invalid email" } }}
+                       rules={{ required: "Email is required", pattern: { value: /^\S+@\S+$/i, message: "Invalid email" } }}
                        render={({ field }) => (
                          <input {...field} type="email" className="w-full bg-transparent border-b border-white/20 px-0 py-3 text-platinum focus:outline-none focus:border-gold transition-colors peer" placeholder=" " />
                        )}
                      />
-                     <label className="absolute left-0 top-3 text-slate-500 text-sm peer-focus:-top-4 peer-focus:text-xs peer-focus:text-gold transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-sm">Corporate Email</label>
-                     {errors.email && <span className="text-red-500 text-xs mt-1 absolute -bottom-5">{errors.email.message}</span>}
+                     <label className="absolute left-0 top-3 text-slate-500 text-sm peer-focus:-top-4 peer-focus:text-xs peer-focus:text-gold transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-sm">Email</label>
+                     {errors.email && <span className="text-red-500 text-xs mt-1 absolute -bottom-5">{errors.email?.message as string}</span>}
                    </div>
                    <div className="relative group mb-8 mt-8">
                      <Controller
@@ -90,7 +103,7 @@ export function Footer() {
                        )}
                      />
                      <label className="absolute left-0 top-3 text-slate-500 text-sm peer-focus:-top-4 peer-focus:text-xs peer-focus:text-gold transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-sm">Primary Objective</label>
-                     {errors.objective && <span className="text-red-500 text-xs mt-1 absolute -bottom-5">{errors.objective.message}</span>}
+                     {errors.objective && <span className="text-red-500 text-xs mt-1 absolute -bottom-5">{errors.objective?.message as string}</span>}
                    </div>
                    <button type="submit" disabled={isSubmitting} className="w-full mt-6 pt-4 flex items-center justify-between group disabled:opacity-50">
                       <span className="font-semibold text-xs tracking-[0.2em] uppercase text-platinum group-hover:text-gold transition-colors">

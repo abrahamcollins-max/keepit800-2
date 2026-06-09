@@ -57,7 +57,7 @@ export function AuthModal({ isOpen, onClose }: { isOpen: boolean, onClose: () =>
                   placeholder=" " 
                   required
                 />
-                <label className="absolute left-0 top-3 text-slate-500 text-sm peer-focus:-top-4 peer-focus:text-xs peer-focus:text-gold transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-sm pointer-events-none">Corporate Email</label>
+                <label className="absolute left-0 top-3 text-slate-500 text-sm peer-focus:-top-4 peer-focus:text-xs peer-focus:text-gold transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-sm pointer-events-none">Email</label>
               </div>
               <div className="relative group">
                 <input 

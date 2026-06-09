@@ -56,7 +56,7 @@ export function Programs() {
                   <h3 className="font-serif text-2xl font-bold text-platinum leading-snug group-hover/card:text-gold transition-colors duration-500">{item}</h3>
                 </div>
                 <div className="mt-12 pt-6 border-t border-white/[0.05] flex items-center justify-between text-slate-500 group-hover/card:text-gold font-semibold text-xs tracking-widest uppercase transition-colors duration-500">
-                  Read Blueprint
+                  View Details
                   <ArrowRight className="w-5 h-5 opacity-0 group-hover/card:opacity-100 -translate-x-2 group-hover/card:translate-x-0 transition-all duration-500" strokeWidth={1} />
                 </div>
              </div>
