@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { GraduationCap, Home, Building2, Scale, Shield, FileText, ChevronRight, X } from 'lucide-react';
 import { cn } from '../lib/utils';
@@ -12,20 +12,22 @@ export function ServicesMatrix() {
 
   useEffect(() => {
     if (activeService !== 'none') {
-      document.body.style.overflow = 'hidden';
-      // @ts-ignore
-      if (window.lenis) window.lenis.stop();
+      if ((window as any).lenis) (window as any).lenis.stop();
     } else {
-      document.body.style.overflow = '';
-      // @ts-ignore
-      if (window.lenis) window.lenis.start();
+      if ((window as any).lenis) (window as any).lenis.start();
     }
     return () => {
-      document.body.style.overflow = '';
-      // @ts-ignore
-      if (window.lenis) window.lenis.start();
+      if ((window as any).lenis) (window as any).lenis.start();
     };
   }, [activeService]);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setActiveService('none');
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
 
   const services = [
     {
@@ -147,6 +149,7 @@ export function ServicesMatrix() {
                 "matrix-card w-full text-left relative overflow-hidden flex flex-col p-10 rounded-none border-[0.5px] border-white/10 glass-panel group transition-all duration-700 hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(0,0,0,0.4)]",
                 service.id === 'shields' || service.id === 'foreclosure' ? "aspect-square justify-center" : ""
               )}
+              aria-label={`View ${service.title} Blueprint`}
             >
               {/* Radial spotlight effect driven by JS mouse tracking */}
               <div className="pointer-events-none absolute -inset-px opacity-0 group-hover:opacity-100 transition-opacity duration-300 before:absolute before:inset-0 before:bg-[radial-gradient(400px_circle_at_var(--mouse-x)_var(--mouse-y),rgba(212,175,55,0.1),transparent_40%)]" />
@@ -179,6 +182,7 @@ export function ServicesMatrix() {
               exit={{ opacity: 0, backdropFilter: 'blur(0px)' }}
               transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
               className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-obsidian/80"
+              onClick={() => setActiveService('none')}
             >
               <motion.div
                  initial={{ scale: 0.95, opacity: 0, y: 40 }}
@@ -188,6 +192,7 @@ export function ServicesMatrix() {
                  data-lenis-prevent="true"
                  onWheel={(e) => e.stopPropagation()}
                  onTouchMove={(e) => e.stopPropagation()}
+                 onClick={(e) => e.stopPropagation()}
                  className="glass-panel border-gold/20 rounded-none p-10 md:p-16 max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-[0_30px_100px_rgba(0,0,0,0.8)] relative"
               >
                 <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-gold to-transparent opacity-50"></div>
@@ -195,6 +200,7 @@ export function ServicesMatrix() {
                 <button 
                   onClick={() => setActiveService('none')}
                   className="absolute top-8 right-8 p-3 glass-panel rounded-full hover:bg-white/10 text-slate-300 transition-colors group"
+                  aria-label="Close"
                 >
                   <X className="w-5 h-5 group-hover:rotate-90 transition-transform duration-500" strokeWidth={1.5} />
                 </button>

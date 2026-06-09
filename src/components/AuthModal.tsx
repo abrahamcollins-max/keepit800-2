@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'motion/react';
 import { X, Lock, ArrowRight } from 'lucide-react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 export function AuthModal({ isOpen, onClose }: { isOpen: boolean, onClose: () => void }) {
   const [email, setEmail] = useState('');

@@ -4,26 +4,36 @@ import { Search, ShieldAlert, TrendingUp, ArrowRight, X, ChevronRight, Lock } fr
 import { cn } from '../lib/utils';
 
 export function Hero() {
-  const [activePanel, setActivePanel] = useState<'stop' | 'build' | null>(null);
+  const [activePanel, setActivePanel] = useState<'stop' | 'build' | 'search' | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [isInputFocused, setIsInputFocused] = useState(false);
   
   useEffect(() => {
     if (activePanel) {
-      document.body.style.overflow = 'hidden';
-      // @ts-ignore
-      if (window.lenis) window.lenis.stop();
+      if ((window as any).lenis) (window as any).lenis.stop();
     } else {
-      document.body.style.overflow = '';
-      // @ts-ignore
-      if (window.lenis) window.lenis.start();
+      if ((window as any).lenis) (window as any).lenis.start();
     }
     return () => { 
-        document.body.style.overflow = ''; 
-        // @ts-ignore
-        if (window.lenis) window.lenis.start();
+        if ((window as any).lenis) (window as any).lenis.start();
     };
   }, [activePanel]);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setActivePanel(null);
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
+
+  useEffect(() => {
+    if (searchQuery.length > 0 && !activePanel) {
+      setActivePanel('search');
+    } else if (searchQuery.length === 0 && activePanel === 'search') {
+      setActivePanel(null);
+    }
+  }, [searchQuery]);
 
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -158,6 +168,7 @@ export function Hero() {
                  <div 
                    onClick={() => setActivePanel('stop')}
                    className="glass-panel group relative overflow-hidden rounded-[2.5rem] p-10 cursor-pointer flex flex-col hover:border-gold/30 hover:shadow-[0_20px_50px_rgba(212,175,55,0.1)] transition-all duration-700 h-full"
+                   aria-label="Open Stop The Damage Protocols"
                  >
                    <div className="absolute inset-0 bg-gradient-to-br from-gold/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
                    <div className="w-16 h-16 rounded-2xl glass-panel border-gold/20 flex items-center justify-center mb-8">
@@ -177,6 +188,7 @@ export function Hero() {
                  <div 
                    onClick={() => setActivePanel('build')}
                    className="glass-panel group relative overflow-hidden rounded-[2.5rem] p-10 cursor-pointer flex flex-col hover:border-cyan-radiant/30 hover:shadow-[0_20px_50px_rgba(56,189,248,0.1)] transition-all duration-700 h-full"
+                   aria-label="Open Build Wealth & Funding Protocols"
                  >
                    <div className="absolute inset-0 bg-gradient-to-br from-cyan-radiant/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
                    <div className="w-16 h-16 rounded-2xl glass-panel border-cyan-radiant/20 flex items-center justify-center mb-8">
@@ -222,32 +234,47 @@ export function Hero() {
                  <button 
                    onClick={() => setActivePanel(null)}
                    className="absolute top-4 right-4 md:top-6 md:right-6 w-10 h-10 rounded-full hover:bg-white/10 text-slate-300 transition-colors z-20 flex items-center justify-center bg-black/40 border border-white/10 shadow-xl"
+                   aria-label="Close"
                  >
                    <X className="w-5 h-5" strokeWidth={1.5} />
                  </button>
 
                  <div className="md:w-1/3 flex flex-col justify-center">
                     <div className={cn("w-20 h-20 rounded-2xl glass-panel flex items-center justify-center mb-8", activePanel === 'stop' ? "border-gold/30" : "border-cyan-radiant/30")}>
-                      {activePanel === 'stop' ? <ShieldAlert className="w-10 h-10 text-gold" strokeWidth={1} /> : <TrendingUp className="w-10 h-10 text-cyan-radiant" strokeWidth={1} />}
+                      {activePanel === 'stop' ? <ShieldAlert className="w-10 h-10 text-gold" strokeWidth={1} /> : activePanel === 'build' ? <TrendingUp className="w-10 h-10 text-cyan-radiant" strokeWidth={1} /> : <Search className="w-10 h-10 text-platinum" strokeWidth={1} />}
                     </div>
                     <h2 className="font-serif text-4xl font-bold text-platinum mb-4 uppercase">
-                      {activePanel === 'stop' ? 'Stop The Damage' : 'Build Wealth'}
+                      {activePanel === 'search' ? 'Search Results' : activePanel === 'stop' ? 'Stop The Damage' : 'Build Wealth'}
                     </h2>
-                    <p className="text-slate-400 font-light leading-relaxed mb-8">
-                       Select your precise target below to initiate the structural blueprint for immediate resolution.
+                    <p className="text-slate-400 font-light leading-relaxed mb-6">
+                       {activePanel === 'search' ? 'Find the exact program or strategy to unlock your financial freedom.' : 'Select your precise target below to initiate the structural blueprint for immediate resolution.'}
                     </p>
+                    
+                    {activePanel === 'search' && (
+                      <div className="flex items-center glass-panel rounded-xl p-2 mb-4">
+                         <Search className="w-5 h-5 ml-2 shrink-0 text-gold" strokeWidth={1.5} />
+                         <input
+                           type="text"
+                           value={searchQuery}
+                           onChange={(e) => setSearchQuery(e.target.value)}
+                           placeholder="Refine search..."
+                           className="w-full bg-transparent border-none text-platinum px-3 py-2 text-sm focus:outline-none"
+                           autoFocus
+                         />
+                      </div>
+                    )}
                  </div>
 
                  <div className="md:w-2/3 h-full max-h-[60vh] overflow-y-auto hide-scrollbar pb-8 pr-4 pointer-events-auto relative" onWheel={(e) => e.stopPropagation()} onTouchMove={(e) => e.stopPropagation()} data-lenis-prevent="true">
                     <div className="flex flex-col gap-3">
-                      {(activePanel === 'stop' ? stopItems : buildItems)
+                      {(activePanel === 'stop' ? stopItems : activePanel === 'build' ? buildItems : [...stopItems, ...buildItems])
                         .filter(item => item.toLowerCase().includes(searchQuery.toLowerCase()))
                         .map((item, i) => (
                         <motion.button
                           initial={{ opacity: 0, x: 20 }}
                           animate={{ opacity: 1, x: 0 }}
                           transition={{ delay: i * 0.05, duration: 0.5 }}
-                          key={i}
+                          key={item}
                           className="w-full text-left p-6 rounded-2xl glass-panel group/btn hover:bg-white/5 transition-all flex items-center justify-between"
                         >
                           <span className="font-medium text-platinum group-hover/btn:text-white transition-colors">{item}</span>
@@ -256,7 +283,7 @@ export function Hero() {
                           </div>
                         </motion.button>
                       ))}
-                      {(activePanel === 'stop' ? stopItems : buildItems).filter(item => item.toLowerCase().includes(searchQuery.toLowerCase())).length === 0 && (
+                      {(activePanel === 'stop' ? stopItems : activePanel === 'build' ? buildItems : [...stopItems, ...buildItems]).filter(item => item.toLowerCase().includes(searchQuery.toLowerCase())).length === 0 && (
                         <div className="p-8 text-center text-slate-500 font-serif italic border border-white/5 rounded-2xl">No protocols found. Please revise search.</div>
                       )}
                     </div>
