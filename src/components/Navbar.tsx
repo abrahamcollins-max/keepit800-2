@@ -1,8 +1,14 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Shield, Menu, X, ChevronRight } from 'lucide-react';
+import { Shield, Menu, X, ChevronRight, Facebook, Instagram, Linkedin, Twitter } from 'lucide-react';
 import { cn } from '../lib/utils';
 import { AuthModal } from './AuthModal';
+
+const TikTokIcon = ({ className }: { className?: string }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+    <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+  </svg>
+);
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -53,11 +59,19 @@ export function Navbar() {
                 key={link.name}
                 href={link.href}
                 className="text-xs uppercase tracking-widest font-medium text-slate-200 hover:text-gold transition-colors relative group"
-              >
+               >
                 {link.name}
                 <span className="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold transition-all duration-500 ease-out group-hover:w-full opacity-60"></span>
               </a>
             ))}
+            
+            <div className="flex items-center gap-4 ml-2 pr-6 border-r border-white/20">
+              <a href="#" className="text-slate-400 hover:text-gold transition-colors"><Facebook className="w-[18px] h-[18px]" /></a>
+              <a href="#" className="text-slate-400 hover:text-gold transition-colors"><Instagram className="w-[18px] h-[18px]" /></a>
+              <a href="#" className="text-slate-400 hover:text-gold transition-colors"><Linkedin className="w-[18px] h-[18px]" /></a>
+              <a href="#" className="text-slate-400 hover:text-gold transition-colors"><TikTokIcon className="w-[18px] h-[18px]" /></a>
+              <a href="#" className="text-slate-400 hover:text-gold transition-colors"><Twitter className="w-[18px] h-[18px]" /></a>
+            </div>
           </div>
 
           <div className="hidden lg:flex">

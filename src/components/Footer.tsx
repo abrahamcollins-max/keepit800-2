@@ -1,7 +1,13 @@
-import { MessageSquare, Phone, ArrowRight, ShieldCheck, Mail, MapPin } from 'lucide-react';
+import { MessageSquare, Phone, ArrowRight, ShieldCheck, Mail, MapPin, Facebook, Instagram, Linkedin, Twitter } from 'lucide-react';
 import { cn } from '../lib/utils';
 import { motion } from 'motion/react';
 import { useForm, Controller } from "react-hook-form";
+
+const TikTokIcon = ({ className }: { className?: string }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+    <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+  </svg>
+);
 
 export function Footer() {
   const { control, handleSubmit, formState: { errors, isSubmitting, isSubmitSuccessful } } = useForm({
@@ -192,8 +198,17 @@ export function Footer() {
            
            <div className="flex flex-col md:flex-row items-center justify-between pt-8 border-t border-white/[0.05] text-xs font-semibold tracking-widest uppercase text-slate-600">
               <p>&copy; 2026 KEEPIT800. All rights reserved.</p>
-              <div className="flex gap-4 mt-4 md:mt-0">
-                <span>Designed for Authority</span>
+              
+              <div className="flex items-center gap-6 mt-6 md:mt-0">
+                <div className="flex items-center gap-4 text-slate-400">
+                  <a href="#" className="hover:text-gold transition-colors"><Facebook className="w-4 h-4" /></a>
+                  <a href="#" className="hover:text-gold transition-colors"><Instagram className="w-4 h-4" /></a>
+                  <a href="#" className="hover:text-gold transition-colors"><Linkedin className="w-4 h-4" /></a>
+                  <a href="#" className="hover:text-gold transition-colors"><TikTokIcon className="w-4 h-4" /></a>
+                  <a href="#" className="hover:text-gold transition-colors"><Twitter className="w-4 h-4" /></a>
+                </div>
+                <div className="hidden md:block w-px h-4 bg-white/10"></div>
+                <span className="hidden md:block">Designed for Authority</span>
               </div>
            </div>
         </footer>

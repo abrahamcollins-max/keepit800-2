@@ -1,12 +1,11 @@
-import { Download, PlayCircle, FileText, Lock } from 'lucide-react';
+import { Download, PlayCircle, FileText, Lock, ExternalLink } from 'lucide-react';
 import { motion } from 'motion/react';
 
 export function ResourcesHub() {
   return (
-    <section id="resources" className="py-24 px-6 lg:px-12 relative">
-      <div className="absolute inset-0 bg-obsidian mix-blend-multiply -z-10"></div>
+    <section id="resources" className="py-24 px-6 lg:px-12 relative bg-obsidian">
       
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-7xl mx-auto z-10 relative">
         <div className="grid lg:grid-cols-12 gap-12">
            
            {/* Student Loan Hub block */}
@@ -14,7 +13,7 @@ export function ResourcesHub() {
              initial={{ opacity: 0, y: 20 }}
              whileInView={{ opacity: 1, y: 0 }}
              viewport={{ once: true }}
-             className="lg:col-span-5 relative rounded-[2.5rem] bg-gradient-to-br from-slate-blue to-obsidian border border-white/5 p-10 overflow-hidden"
+             className="lg:col-span-5 relative rounded-[2.5rem] glass-panel bg-slate-blue/30 border border-white/10 p-10 overflow-hidden shadow-2xl"
            >
              <div className="absolute top-0 right-0 p-8 blur-3xl opacity-20">
                <div className="w-32 h-32 bg-cyan-radiant rounded-full"></div>
@@ -29,6 +28,13 @@ export function ResourcesHub() {
              </p>
              
              <div className="space-y-4">
+                <button className="w-full flex items-center justify-between p-4 rounded-2xl bg-white/5 hover:bg-white/10 transition-colors text-white group">
+                   <div className="flex items-center gap-3">
+                     <ExternalLink className="w-5 h-5 text-cyan-radiant" />
+                     <span className="font-medium">Verify Your Balance</span>
+                   </div>
+                   <ExternalLink className="w-4 h-4 text-slate-500 group-hover:text-cyan-radiant transition-colors" />
+                </button>
                 <button className="w-full flex items-center justify-between p-4 rounded-2xl bg-white/5 hover:bg-white/10 transition-colors text-white group">
                    <div className="flex items-center gap-3">
                      <FileText className="w-5 h-5 text-cyan-radiant" />

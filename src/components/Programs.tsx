@@ -15,6 +15,10 @@ export function Programs() {
     "Become Foreclosure Proof - Stop Bank Foreclosure Fraud",
     "Get $100,000 in 2-5 days",
     "NSCRA System Integration",
+    "Commercial Development Projects",
+    "Bankruptcy Removal",
+    "Books that will change your life",
+    "Perfect Credit Program – PCP – 700 - 750",
     "Suing the Credit Bureaus for Fraud"
   ];
 
@@ -31,25 +35,22 @@ export function Programs() {
       </div>
 
       <div 
-        className="relative group w-full flex overflow-x-hidden cursor-ew-resize"
+        className="relative group w-full flex overflow-x-hidden cursor-ew-resize py-4"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        <div className="absolute left-0 top-0 bottom-0 w-48 bg-gradient-to-r from-obsidian to-transparent z-10 pointer-events-none"></div>
-        <div className="absolute right-0 top-0 bottom-0 w-48 bg-gradient-to-l from-obsidian to-transparent z-10 pointer-events-none"></div>
-
         <motion.div
            animate={{ x: [0, -2800] }}
            transition={{ ease: "linear", duration: isHovered ? 120 : 40, repeat: Infinity }}
            className="flex gap-6 px-6 relative w-max"
         >
-          {/* Double array to create seamless loop */}
+           {/* Double array to create seamless loop */}
           {[...flags, ...flags].map((item, index) => (
              <div 
                key={index} 
                className={cn(
-                 "flex-shrink-0 w-[450px] glass-panel p-10 transition-all duration-700 flex flex-col group/card rounded-none border-[0.5px] border-white/10",
-                 isHovered ? "opacity-40 hover:opacity-100 hover:scale-[1.02] hover:border-gold/30 hover:shadow-[0_20px_50px_rgba(212,175,55,0.1)]" : "opacity-100"
+                 "flex-shrink-0 w-[450px] bg-[#0A1931]/80 p-10 transition-all duration-700 flex flex-col group/card border border-white/5 shadow-2xl transform-gpu rounded-xl z-0",
+                 isHovered ? "opacity-30 hover:opacity-100 hover:scale-105 hover:border-gold/30 hover:shadow-[0_30px_60px_-15px_rgba(0,0,0,0.8),0_0_40px_rgba(212,175,55,0.15)] hover:z-10 hover:-translate-y-2" : "opacity-100 shadow-[0_10px_30px_-10px_rgba(0,0,0,0.5)]"
                )}
              >
                 <div className="flex-1">

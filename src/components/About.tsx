@@ -48,7 +48,7 @@ export function About() {
     },
     {
       title: "The Foundation",
-      description: "A deep legacy built in unyielding connection with the Credit and Debt Management Institute, establishing national compliance arcs."
+      description: "A deep legacy built on possessing all 3 credit industry records, 2 congressional awards and countless accolades for our unyielding pursuit of truth and unilateral access to capital."
     },
     {
       title: "Defending Rights",
@@ -90,7 +90,20 @@ export function About() {
                <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/60 to-transparent"></div>
                <div className="relative z-20">
                   <h3 className="font-serif text-3xl font-bold text-white mb-2">Dr. Michael C. Grayson</h3>
-                  <p className="text-gold font-medium tracking-widest uppercase text-xs">Architect, Master Strategist</p>
+                  <p className="text-gold font-medium tracking-widest uppercase text-xs">The World’s Leading Credit Expert</p>
+                  
+                  {/* Buttons below image text */}
+                  <div className="flex flex-col gap-3 mt-6">
+                    <a href="tel:8885515533" className="w-full text-center py-3 border border-gold/40 text-gold hover:bg-gold hover:text-obsidian transition-colors uppercase tracking-[0.1em] text-xs font-semibold rounded-sm">
+                      Book a Financial Literacy Class, Credit Education
+                    </a>
+                    <a href="tel:8885515533" className="w-full text-center py-3 border border-gold/40 text-gold hover:bg-gold hover:text-obsidian transition-colors uppercase tracking-[0.1em] text-xs font-semibold rounded-sm">
+                      Book a Church or Community Workshops
+                    </a>
+                    <a href="tel:8885515533" className="w-full text-center py-3 bg-gold text-obsidian hover:bg-yellow-400 transition-colors uppercase tracking-[0.1em] text-xs font-bold rounded-sm">
+                      Schedule a Call
+                    </a>
+                  </div>
                   
                   {/* GSAP Drawn Signature */}
                   <div className="mt-8 opacity-80 h-16 pointer-events-none">
@@ -121,14 +134,14 @@ export function About() {
           >
             <div className="flex items-center gap-4 mb-6">
               <div className="h-px bg-gold w-12 opacity-50"></div>
-              <h2 className="text-xs font-semibold tracking-[0.3em] uppercase text-gold">Reassuring Credibility</h2>
+              <h2 className="text-xs font-semibold tracking-[0.3em] uppercase text-gold">Fix Credit. Eliminate Debt. Build Wealth.</h2>
             </div>
             <h3 className="font-serif text-5xl md:text-6xl font-bold text-white tracking-tight mb-8 leading-[1.1]">
-              Institutional Authority.<br />
-              <span className="text-slate-400 italic font-normal">Stress-Free Guidance.</span>
+              Credit and Debt Management Institute<br />
+              <span className="text-slate-400 italic font-normal text-3xl">The Inventors of the Perfect Credit Formula™</span>
             </h3>
             <p className="text-xl text-slate-300 font-light leading-relaxed">
-              We stand as the definitive architect bridging the gap between vulnerable consumers and elite asset defense. Our systematic approach replaces chaos with uncompromising protection.
+              We stand as the definitive credit architect bridging the gap between vulnerable consumers and elite asset defense. Our systematic approach replaces chaos with uncompromising protection.
             </p>
           </motion.div>
 

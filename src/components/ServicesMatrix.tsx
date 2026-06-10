@@ -37,6 +37,7 @@ export function ServicesMatrix() {
       subtitle: '$500 / $1,000',
       color: 'gold',  // Simplified for accent styling
       details: [
+        { label: 'Verify Your Balance', value: 'Included' },
         { label: 'General program enrollment', value: '$500' },
         { label: 'Active wage garnishment mitigation', value: '$1,000' }
       ]
@@ -63,7 +64,9 @@ export function ServicesMatrix() {
       details: [
         { label: 'Structural corporate credit blueprints', value: 'Included' },
         { label: 'Lending pathways', value: 'Included' },
-        { label: 'Direct institutional funding access', value: 'Included' }
+        { label: 'Direct institutional funding access', value: 'Included' },
+        { label: 'BUSINESS CREDIT 80 paydex in 90 days or less', value: '$5000' },
+        { label: 'PLATINUM BUSINESS CREDIT High recommends plus 80 paydex', value: '$7,500' }
       ]
     },
     {
@@ -81,7 +84,7 @@ export function ServicesMatrix() {
     {
       id: 'shields',
       icon: <Shield className="w-8 h-8" strokeWidth={1} />,
-      title: 'Protection Shields',
+      title: 'Credit Insurance',
       subtitle: 'Monthly Subscription',
       color: 'gold',
       details: [
