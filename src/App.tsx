@@ -8,6 +8,7 @@ import { Routes, Route } from 'react-router-dom';
 import Lenis from 'lenis';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { motion, useScroll, useSpring } from 'motion/react';
 
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
@@ -46,6 +47,13 @@ function Home() {
 }
 
 export default function App() {
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
+
   useEffect(() => {
     const lenis = new Lenis({
       duration: 1.5, // Decelerated motion
@@ -76,6 +84,10 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-obsidian text-milk-white selection:bg-cyan-radiant/30 relative">
+      <motion.div 
+        className="fixed top-0 left-0 right-0 h-0.5 bg-cyan-radiant origin-left z-[100] pointer-events-none shadow-[0_0_12px_rgba(56,189,248,0.6)]"
+        style={{ scaleX }}
+      />
       <div className="noise-overlay"></div>
       
       {/* Editorial side margins */}
