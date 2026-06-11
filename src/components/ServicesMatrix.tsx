@@ -35,7 +35,7 @@ export function ServicesMatrix() {
       icon: <GraduationCap className="w-8 h-8" strokeWidth={1} />,
       title: 'Student Loans',
       subtitle: '$500 / $1,000',
-      color: 'gold',  // Simplified for accent styling
+      color: 'cyan-radiant',  // Simplified for accent styling
       details: [
         { label: 'Verify Your Balance', value: 'Included' },
         { label: 'General program enrollment', value: '$500' },
@@ -60,7 +60,7 @@ export function ServicesMatrix() {
       icon: <Building2 className="w-8 h-8" strokeWidth={1} />,
       title: 'Business Credit',
       subtitle: 'Complete Blueprint',
-      color: 'gold',
+      color: 'cyan-radiant',
       details: [
         { label: 'Structural corporate credit blueprints', value: 'Included' },
         { label: 'Lending pathways', value: 'Included' },
@@ -86,7 +86,7 @@ export function ServicesMatrix() {
       icon: <Shield className="w-8 h-8" strokeWidth={1} />,
       title: 'Credit Insurance',
       subtitle: 'Monthly Subscription',
-      color: 'gold',
+      color: 'cyan-radiant',
       details: [
         { label: 'Perfect Credit Protection (PCP)', value: '$29.95 / mo' },
         { label: 'Bad Debt Protection (BDP)', value: '$99.95 / mo' },
@@ -125,8 +125,8 @@ export function ServicesMatrix() {
         <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
           <div className="max-w-2xl">
             <div className="flex items-center gap-4 mb-6">
-              <div className="h-px bg-gold w-12 opacity-50"></div>
-              <h2 className="text-xs font-semibold tracking-[0.3em] uppercase text-gold">Architecture of Wealth</h2>
+              <div className="h-px bg-cyan-radiant w-12 opacity-50"></div>
+              <h2 className="text-xs font-semibold tracking-[0.3em] uppercase text-cyan-radiant">Architecture of Wealth</h2>
             </div>
             <h2 className="text-4xl md:text-6xl font-serif font-bold text-platinum tracking-tight leading-tight">
               Our Services
@@ -155,21 +155,21 @@ export function ServicesMatrix() {
               aria-label={`View ${service.title} Details`}
             >
               {/* Radial spotlight effect driven by JS mouse tracking */}
-              <div className="pointer-events-none absolute -inset-px opacity-0 group-hover:opacity-100 transition-opacity duration-300 before:absolute before:inset-0 before:bg-[radial-gradient(400px_circle_at_var(--mouse-x)_var(--mouse-y),rgba(212,175,55,0.1),transparent_40%)]" />
+              <div className="pointer-events-none absolute -inset-px opacity-0 group-hover:opacity-100 transition-opacity duration-300 before:absolute before:inset-0 before:bg-[radial-gradient(400px_circle_at_var(--mouse-x)_var(--mouse-y),rgba(56,189,248,0.1),transparent_40%)]" />
               
               <div className="relative z-10 flex flex-col items-start h-full">
                  <div className={cn(
                    "w-16 h-16 rounded-full flex items-center justify-center mb-8 border transition-all duration-700", 
-                   service.color === 'gold' ? "border-gold/30 text-gold group-hover:bg-gold/10" : "border-platinum/30 text-platinum group-hover:bg-platinum/10"
+                   service.color === 'cyan-radiant' ? "border-cyan-radiant/30 text-cyan-radiant group-hover:bg-cyan-radiant/10" : "border-platinum/30 text-platinum group-hover:bg-platinum/10"
                  )}>
                   {service.icon}
                  </div>
-                 <h3 className="font-serif text-2xl font-bold text-white mb-3 group-hover:text-gold transition-colors duration-500">{service.title}</h3>
+                 <h3 className="font-serif text-2xl font-bold text-white mb-3 group-hover:text-cyan-radiant transition-colors duration-500">{service.title}</h3>
                  <p className="font-medium text-xs tracking-[0.2em] uppercase text-slate-400 mb-6">{service.subtitle}</p>
                  
                  <div className="mt-auto w-full pt-6 border-t border-white/[0.05] flex items-center justify-between">
                    <span className="text-xs font-semibold text-slate-500 tracking-wider">VIEW DETAILS</span>
-                   <ChevronRight className="w-4 h-4 text-gold opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-500" />
+                   <ChevronRight className="w-4 h-4 text-cyan-radiant opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-500" />
                  </div>
               </div>
             </motion.button>
@@ -196,9 +196,9 @@ export function ServicesMatrix() {
                  onWheel={(e) => e.stopPropagation()}
                  onTouchMove={(e) => e.stopPropagation()}
                  onClick={(e) => e.stopPropagation()}
-                 className="glass-panel border-gold/20 rounded-none p-10 md:p-16 max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-[0_30px_100px_rgba(0,0,0,0.8)] relative"
+                 className="glass-panel border-cyan-radiant/20 rounded-none p-10 md:p-16 max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-[0_30px_100px_rgba(0,0,0,0.8)] relative"
               >
-                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-gold to-transparent opacity-50"></div>
+                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-cyan-radiant to-transparent opacity-50"></div>
 
                 <button 
                   onClick={() => setActiveService('none')}
@@ -211,26 +211,26 @@ export function ServicesMatrix() {
                 {services.filter(s => s.id === activeService).map(service => (
                   <div key={service.id}>
                     <div className="flex items-center gap-6 mb-10">
-                      <div className={cn("w-20 h-20 rounded-full flex items-center justify-center border", service.color === 'gold' ? "border-gold/30 text-gold" : "border-platinum/30 text-platinum")}>
+                      <div className={cn("w-20 h-20 rounded-full flex items-center justify-center border", service.color === 'cyan-radiant' ? "border-cyan-radiant/30 text-cyan-radiant" : "border-platinum/30 text-platinum")}>
                         {service.icon}
                       </div>
                       <div>
                         <h3 className="font-serif text-4xl md:text-5xl font-bold text-platinum mb-2">{service.title}</h3>
-                        <p className="text-sm font-semibold tracking-[0.2em] uppercase text-gold">{service.subtitle}</p>
+                        <p className="text-sm font-semibold tracking-[0.2em] uppercase text-cyan-radiant">{service.subtitle}</p>
                       </div>
                     </div>
                     
                     <div className="space-y-3 mb-12">
                       {service.details.map((detail, i) => (
-                        <div key={i} className="flex flex-col sm:flex-row justify-between sm:items-center p-5 rounded-none glass-panel border-[0.5px] border-white/[0.05] hover:border-gold/20 transition-colors">
+                        <div key={i} className="flex flex-col sm:flex-row justify-between sm:items-center p-5 rounded-none glass-panel border-[0.5px] border-white/[0.05] hover:border-cyan-radiant/20 transition-colors">
                           <span className="font-light text-slate-300 mb-2 sm:mb-0">{detail.label}</span>
-                          <span className="font-serif font-bold text-gold text-lg">{detail.value}</span>
+                          <span className="font-serif font-bold text-cyan-radiant text-lg">{detail.value}</span>
                         </div>
                       ))}
                     </div>
 
                     <div className="flex justify-start">
-                      <button className="px-10 py-5 rounded-sm glass-panel border-gold/40 text-platinum hover:bg-yellow-400 hover:text-obsidian hover:border-yellow-400 font-bold text-sm tracking-widest uppercase transition-all duration-500 flex items-center gap-3">
+                      <button className="px-10 py-5 rounded-sm glass-panel border-cyan-radiant/40 text-platinum hover:bg-blue-400 hover:text-obsidian hover:border-blue-400 font-bold text-sm tracking-widest uppercase transition-all duration-500 flex items-center gap-3">
                         Schedule Your Consultation <ChevronRight className="w-4 h-4" strokeWidth={2} />
                       </button>
                     </div>

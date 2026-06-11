@@ -75,7 +75,7 @@ export default function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-obsidian text-milk-white selection:bg-gold/30 relative">
+    <div className="min-h-screen bg-obsidian text-milk-white selection:bg-cyan-radiant/30 relative">
       <div className="noise-overlay"></div>
       
       {/* Editorial side margins */}
