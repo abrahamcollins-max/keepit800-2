@@ -84,14 +84,14 @@ export function Hero() {
           loop 
           muted 
           playsInline
-          className="absolute inset-0 w-full h-full object-cover opacity-60"
+          className="absolute inset-0 w-full h-full object-cover opacity-95 brightness-[1.15] contrast-[1.15] saturate-[1.05]"
         >
           <source src={heroVideo} type="video/mp4" />
         </video>
-        {/* Premium brand blue overlay */}
-        <div className="absolute inset-0 bg-[#1C3D7A]/45 mix-blend-multiply"></div>
-        {/* Edge blending */}
-        <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-transparent to-obsidian/30"></div>
+        {/* High-fidelity translucent overlay to retain superb contrast and color richness */}
+        <div className="absolute inset-0 bg-[#09152B]/20"></div>
+        {/* Gentle vignetting/edge blending */}
+        <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-transparent to-obsidian/20"></div>
       </div>
 
       <div className="relative z-10 max-w-5xl w-full flex flex-col items-center">
@@ -102,11 +102,11 @@ export function Hero() {
           transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
           className="text-center mb-8 relative z-50"
         >
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold tracking-tight text-platinum mb-6 drop-shadow-[0_4px_30px_rgba(56,189,248,0.2)]">
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold tracking-tight text-platinum mb-6 drop-shadow-[0_4px_30px_rgba(212,175,55,0.2)]">
             KEEP IT 800
           </h1>
           <p className="text-lg md:text-2xl font-light text-slate-300 max-w-2xl mx-auto leading-relaxed">
-            <span className="text-cyan-radiant font-medium">Build, Maintain, and Monetize</span> your financial freedom.
+            <span className="text-gold font-medium">Build, Maintain, and Monetize</span> your financial freedom.
           </p>
         </motion.div>
 
@@ -115,9 +115,9 @@ export function Hero() {
            initial={{ opacity: 0, scale: 0.95 }}
            animate={{ opacity: 1, scale: 1 }}
            transition={{ duration: 1.5, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-           className="px-8 py-3 rounded-full glass-panel mb-16 shadow-[0_0_40px_rgba(56,189,248,0.05)] border-cyan-radiant/20 flex items-center gap-3"
+           className="px-8 py-3 rounded-full glass-panel mb-16 shadow-[0_0_40px_rgba(212,175,55,0.05)] border-gold/20 flex items-center gap-3"
         >
-          <Lock className="w-4 h-4 text-cyan-radiant" strokeWidth={1.5} />
+          <Lock className="w-4 h-4 text-gold" strokeWidth={1.5} />
           <p className="text-xs md:text-sm font-semibold text-platinum tracking-[0.2em] uppercase">
             Your Credit Will Make You More Money Than Your Job Ever Will
           </p>
@@ -131,16 +131,16 @@ export function Hero() {
           className="w-full max-w-3xl mb-20 relative"
         >
           <div className={cn("relative group transition-all duration-700", isInputFocused ? "scale-[1.02]" : "scale-100")}>
-            <div className={cn("absolute -inset-0.5 rounded-2xl blur transition duration-1000", isInputFocused ? "bg-gradient-to-r from-cyan-radiant/30 via-platinum/20 to-cyan-radiant/30 opacity-70" : "bg-cyan-radiant/10 opacity-30 group-hover:opacity-50")}></div>
+            <div className={cn("absolute -inset-0.5 rounded-2xl blur transition duration-1000", isInputFocused ? "bg-gradient-to-r from-gold/30 via-platinum/20 to-gold/30 opacity-70" : "bg-gold/10 opacity-30 group-hover:opacity-50")}></div>
             <div className="relative glass-panel rounded-2xl flex flex-col p-2 transition-all">
               <label 
                 className={cn("absolute left-[52px] transition-all duration-300 font-medium pointer-events-none flex items-center gap-2", 
-                isInputFocused || searchQuery ? "-top-6 text-xs text-cyan-radiant uppercase tracking-wider" : "top-1/2 -translate-y-1/2 text-base text-slate-400")}
+                isInputFocused || searchQuery ? "-top-6 text-xs text-gold uppercase tracking-wider" : "top-1/2 -translate-y-1/2 text-base text-slate-400")}
               >
                 What financial roadblock can we remove for you today?
               </label>
               <div className="flex items-center">
-                <Search className={cn("w-6 h-6 ml-4 shrink-0 transition-colors duration-300", isInputFocused ? "text-cyan-radiant" : "text-slate-500")} strokeWidth={1.5} />
+                <Search className={cn("w-6 h-6 ml-4 shrink-0 transition-colors duration-300", isInputFocused ? "text-gold" : "text-slate-500")} strokeWidth={1.5} />
                 <input
                   type="text"
                   onFocus={() => setIsInputFocused(true)}
@@ -165,18 +165,18 @@ export function Hero() {
                  {/* Panel 1 */}
                  <div 
                    onClick={() => setActivePanel('stop')}
-                   className="glass-panel group relative overflow-hidden rounded-[2.5rem] p-10 cursor-pointer flex flex-col hover:border-cyan-radiant/30 hover:shadow-[0_20px_50px_rgba(56,189,248,0.1)] transition-all duration-700 h-full"
+                   className="glass-panel group relative overflow-hidden rounded-[2.5rem] p-10 cursor-pointer flex flex-col hover:border-gold/30 hover:shadow-[0_20px_50px_rgba(212,175,55,0.1)] transition-all duration-700 h-full"
                    aria-label="Open Stop The Damage Protocols"
                  >
-                   <div className="absolute inset-0 bg-gradient-to-br from-cyan-radiant/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
-                   <div className="w-16 h-16 rounded-2xl glass-panel border-cyan-radiant/20 flex items-center justify-center mb-8">
-                     <ShieldAlert className="w-8 h-8 text-cyan-radiant" strokeWidth={1.5} />
+                   <div className="absolute inset-0 bg-gradient-to-br from-gold/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
+                   <div className="w-16 h-16 rounded-2xl glass-panel border-gold/20 flex items-center justify-center mb-8">
+                     <ShieldAlert className="w-8 h-8 text-gold" strokeWidth={1.5} />
                    </div>
                    <h3 className="text-3xl font-serif font-bold text-platinum mb-4">STOP THE DAMAGE</h3>
                    <p className="text-slate-400 leading-relaxed font-light mb-8 max-w-sm flex-grow">
                      Instantly halt foreclosures, collections, judgments, garnishments, and predatory debt cycles.
                    </p>
-                   <div className="mt-auto flex items-center justify-between text-cyan-radiant font-semibold text-sm uppercase tracking-widest group-hover:translate-x-2 transition-transform duration-500 pt-4">
+                   <div className="mt-auto flex items-center justify-between text-gold font-semibold text-sm uppercase tracking-widest group-hover:translate-x-2 transition-transform duration-500 pt-4">
                      <span>Execute Defense</span>
                      <ArrowRight className="w-5 h-5" strokeWidth={1.5} />
                    </div>
@@ -246,7 +246,7 @@ export function Hero() {
                  transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                  className={cn(
                    "glass-panel w-full max-w-5xl max-h-[85vh] md:max-h-[80vh] rounded-[2.5rem] p-8 md:p-12 relative flex flex-col md:flex-row gap-12 z-10",
-                   activePanel === 'stop' ? "border-cyan-radiant/30 shadow-[0_0_60px_rgba(56,189,248,0.15)] bg-obsidian/95" : "border-cyan-radiant/30 shadow-[0_0_60px_rgba(56,189,248,0.15)] bg-obsidian/95"
+                   activePanel === 'stop' ? "border-gold/30 shadow-[0_0_60px_rgba(212,175,55,0.15)] bg-obsidian/95" : "border-cyan-radiant/30 shadow-[0_0_60px_rgba(56,189,248,0.15)] bg-obsidian/95"
                  )}
                >
                  <button 
@@ -258,8 +258,8 @@ export function Hero() {
                  </button>
 
                   <div className="md:w-1/3 flex flex-col justify-center">
-                    <div className={cn("w-20 h-20 rounded-2xl glass-panel flex items-center justify-center mb-8", activePanel === 'stop' ? "border-cyan-radiant/30" : activePanel === 'fix' ? "border-white/30" : "border-cyan-radiant/30")}>
-                      {activePanel === 'stop' ? <ShieldAlert className="w-10 h-10 text-cyan-radiant" strokeWidth={1} /> : activePanel === 'build' ? <TrendingUp className="w-10 h-10 text-cyan-radiant" strokeWidth={1} /> : activePanel === 'fix' ? <TrendingUp className="w-10 h-10 text-white" strokeWidth={1} /> : <Search className="w-10 h-10 text-platinum" strokeWidth={1} />}
+                    <div className={cn("w-20 h-20 rounded-2xl glass-panel flex items-center justify-center mb-8", activePanel === 'stop' ? "border-gold/30" : activePanel === 'fix' ? "border-white/30" : "border-cyan-radiant/30")}>
+                      {activePanel === 'stop' ? <ShieldAlert className="w-10 h-10 text-gold" strokeWidth={1} /> : activePanel === 'build' ? <TrendingUp className="w-10 h-10 text-cyan-radiant" strokeWidth={1} /> : activePanel === 'fix' ? <TrendingUp className="w-10 h-10 text-white" strokeWidth={1} /> : <Search className="w-10 h-10 text-platinum" strokeWidth={1} />}
                     </div>
                     <h2 className="font-serif text-4xl font-bold text-platinum mb-4 uppercase">
                       {activePanel === 'search' ? 'Search Results' : activePanel === 'stop' ? 'Stop The Damage' : activePanel === 'fix' ? 'FIX IT' : 'GET MONEY & BUILD WEALTH'}
@@ -270,7 +270,7 @@ export function Hero() {
                     
                     {activePanel === 'search' && (
                       <div className="flex items-center glass-panel rounded-xl p-2 mb-4">
-                         <Search className="w-5 h-5 ml-2 shrink-0 text-cyan-radiant" strokeWidth={1.5} />
+                         <Search className="w-5 h-5 ml-2 shrink-0 text-gold" strokeWidth={1.5} />
                          <input
                            type="text"
                            value={searchQuery}
@@ -296,7 +296,7 @@ export function Hero() {
                           className="w-full text-left p-6 rounded-2xl glass-panel group/btn hover:bg-white/5 transition-all flex items-center justify-between"
                         >
                            <span className="font-medium text-platinum group-hover/btn:text-white transition-colors">{item}</span>
-                          <div className={cn("w-8 h-8 shrink-0 rounded-full flex items-center justify-center border transition-all duration-300 group-hover/btn:scale-110 ml-4", activePanel === 'stop' ? "border-cyan-radiant/50 text-cyan-radiant" : activePanel === 'fix' ? "border-white/50 text-white" : "border-cyan-radiant/50 text-cyan-radiant")}>
+                          <div className={cn("w-8 h-8 shrink-0 rounded-full flex items-center justify-center border transition-all duration-300 group-hover/btn:scale-110 ml-4", activePanel === 'stop' ? "border-gold/50 text-gold" : activePanel === 'fix' ? "border-white/50 text-white" : "border-cyan-radiant/50 text-cyan-radiant")}>
                             <ArrowRight className="w-4 h-4" strokeWidth={2} />
                           </div>
                         </motion.button>
